@@ -25,6 +25,11 @@ io.on('connection', socket => {
 
         // already joined user have a alert
         socket.to(roomId).emit('user-connected', userId)
+
+
+        socket.on('disconnect', () => {
+            socket.to(roomId).emit('user-disconnected', userId)
+        })
     })
 })
 
